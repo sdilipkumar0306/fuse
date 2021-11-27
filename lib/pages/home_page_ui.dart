@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fuse/util/common_utils.dart';
 
@@ -17,15 +16,13 @@ class _MainHomePageState extends State<MainHomePage> {
       body: Center(
         child: ElevatedButton(
             onPressed: () {
-              FirebaseFirestore.instance.collection("Testing").doc("Hello").collection("collectionPath").add({"haii": "hello"});
-
-              // if (isDark) {
-              //   setAsLight(context);
-              // } else {
-              //   setAsDark(context);
-              // }
-              // isDark = !isDark;
-              // notMounted(mounted, setState);
+              if (isDark) {
+                setAsLight(context);
+              } else {
+                setAsDark(context);
+              }
+              isDark = !isDark;
+              notMounted(mounted, setState);
             },
             child: Text(isDark.toString())),
       ),
