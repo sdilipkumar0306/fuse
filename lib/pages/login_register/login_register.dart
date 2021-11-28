@@ -114,7 +114,7 @@ class _LoginRegisterUIState extends State<LoginRegisterUI> with SingleTickerProv
                       textFieldColor: UiConstants.mainPageColor,
                       textColor: Colors.white,
                       prefixIcon: const Icon(Icons.person, color: Colors.white),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(35), borderSide: const BorderSide(color: Colors.transparent)),
                       // focusBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
                       hintText: "Enter Name...",
                     ),
@@ -126,7 +126,7 @@ class _LoginRegisterUIState extends State<LoginRegisterUI> with SingleTickerProv
                     controller: emailController,
                     textFieldColor: UiConstants.mainPageColor,
                     textColor: Colors.white,
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(35), borderSide: const BorderSide(color: Colors.transparent)),
                     // focusBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
                     prefixIcon: const Icon(Icons.email, color: Colors.white),
                     hintText: "Enter Email...",
@@ -139,7 +139,7 @@ class _LoginRegisterUIState extends State<LoginRegisterUI> with SingleTickerProv
                     controller: passwordController,
                     textFieldColor: UiConstants.mainPageColor,
                     textColor: Colors.white,
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(35), borderSide: const BorderSide(color: Colors.transparent)),
                     // focusBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
                     prefixIcon: const Icon(Icons.security_rounded, color: Colors.white),
                     suffixIcon: IconButton(
@@ -192,7 +192,7 @@ class _LoginRegisterUIState extends State<LoginRegisterUI> with SingleTickerProv
                 ],
               ),
             ),
-            verticalSpace(10),
+            verticalSpace(isSignIn ? 10 : 6),
             if (isSignIn)
               Container(
                 height: 40,
@@ -221,7 +221,7 @@ class _LoginRegisterUIState extends State<LoginRegisterUI> with SingleTickerProv
                         child: MyText(isSignIn ? "SignUp" : "SignIn", style: GoogleFonts.baskervville(fontSize: 18, fontWeight: FontWeight.bold)))
                   ],
                 )),
-            verticalSpace(20),
+            verticalSpace(isSignIn ? 20 : 10),
           ],
         ),
       ),
