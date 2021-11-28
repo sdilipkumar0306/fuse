@@ -2,12 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'pages/login_register/login_register_ui.dart';
-import 'util/theme/theme_manager.dart';
+import 'util/ui/scroll_disable_nav.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
   runApp(const App());
 }
 
@@ -22,21 +20,22 @@ class _AppState extends State<App> {
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {
-    return ThemeManager(
-        defaultBrightnessPreference: BrightnessPreference.system,
-        data: (Brightness brightness) => ThemeData(
-              primarySwatch: Colors.blue,
-              brightness: brightness,
-            ),
-        loadBrightnessOnStart: true,
-        themedWidgetBuilder: (BuildContext context, ThemeData theme) {
-          return MaterialApp(
-            title: 'Fuse',
-            debugShowCheckedModeBanner: false,
-            theme: theme,
-            home: getFirebaseResponseWidget(),
-          );
-        });
+    return MaterialApp(
+      title: 'Fuse',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.cyan),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Colors.cyan,
+          type: BottomNavigationBarType.fixed,
+          elevation: 0,
+          selectedItemColor: Colors.white,
+          // showUnselectedLabels: true,
+          // showSelectedLabels: false,
+        ),
+      ),
+      home: getFirebaseResponseWidget(),
+    );
   }
 
   Widget getFirebaseResponseWidget() {
@@ -48,7 +47,7 @@ class _AppState extends State<App> {
           return somethingWentWrong();
         }
         if (snapshot.connectionState == ConnectionState.done) {
-          return const LoginRegisterUI();
+          return const HideOnScroll();
         }
         return loading();
       },
@@ -75,3 +74,27 @@ class _AppState extends State<App> {
     );
   }
 }
+
+
+
+
+
+
+
+  // Widget build(BuildContext context) {
+  //   return ThemeManager(
+  //       defaultBrightnessPreference: BrightnessPreference.system,
+  //       data: (Brightness brightness) => ThemeData(
+  //             primarySwatch: Colors.blue,
+  //             brightness: brightness,
+  //           ),
+  //       loadBrightnessOnStart: true,
+  //       themedWidgetBuilder: (BuildContext context, ThemeData theme) {
+  //         return MaterialApp(
+  //           title: 'Fuse',
+  //           debugShowCheckedModeBanner: false,
+  //           theme: theme,
+  //           home: getFirebaseResponseWidget(),
+  //         );
+  //       });
+  // }
