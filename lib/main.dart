@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'util/ui/scroll_disable_nav.dart';
+import 'pages/splash_screen/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,7 +47,7 @@ class _AppState extends State<App> {
           return somethingWentWrong();
         }
         if (snapshot.connectionState == ConnectionState.done) {
-          return const HideOnScroll();
+          return const SplashScreen();
         }
         return loading();
       },

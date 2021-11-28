@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -24,6 +25,7 @@ class MyTextField extends StatelessWidget {
   final void Function()? onEditingComplete;
   final void Function(String)? onFieldSubmitted;
   final void Function(String)? onChanged;
+
   const MyTextField({
     Key? key,
     required this.controller,
@@ -54,6 +56,9 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      cursorColor: Colors.black,
+      cursorRadius: const Radius.circular(5),
+      cursorWidth: 3,
       key: key,
       style: myTextStyle(color: textColor),
       controller: controller,
@@ -70,9 +75,9 @@ class MyTextField extends StatelessWidget {
               enabled: enable,
               filled: true,
               fillColor: textFieldColor,
-              border: border ?? myOutlineInputBorder(radius: borderRadius, color: borderColor),
-              enabledBorder: border ?? myOutlineInputBorder(radius: borderRadius, color: borderColor),
-              focusedBorder: focusBorder ?? myOutlineInputBorder(radius: borderRadius, color: borderColor),
+              border: border ?? myOutlineInputBorder(radius: borderRadius, color: borderColor ?? Colors.transparent),
+              enabledBorder: border ?? myOutlineInputBorder(radius: borderRadius, color: borderColor ?? Colors.transparent),
+              focusedBorder: focusBorder ?? border ?? myOutlineInputBorder(radius: borderRadius, color: borderColor ?? Colors.transparent),
               hintText: hintText,
               labelText: lableText,
               hintStyle: myTextStyle(color: textColor),
@@ -85,7 +90,7 @@ class MyTextField extends StatelessWidget {
   }
 
   TextStyle myTextStyle({Color? color, Color? bgColor}) {
-    return TextStyle(color: color, backgroundColor: bgColor);
+    return GoogleFonts.baskervville(fontSize: 16, color: color, backgroundColor: bgColor, fontWeight: FontWeight.w800);
   }
 
   OutlineInputBorder myOutlineInputBorder({double? radius, Color? color, double? width}) {

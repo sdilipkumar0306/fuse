@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:fuse/pages/home_page_ui.dart';
 import 'package:fuse/util/constants/nav_bar_constants.dart';
 
